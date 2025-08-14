@@ -1,32 +1,31 @@
-Here’s a **safe** and complete `README.md` for your project with placeholders instead of real credentials:
 
----
 
 # Spamhaus ETL Data Connector
 
-This project fetches the **Spamhaus DROP list**, processes it, and loads it into a MongoDB collection using Python.
+This project extracts data from the Spamhaus DROP list, transforms it, and loads it into MongoDB.
+It is designed for cybersecurity data ingestion and analysis.
 
 ---
 
 ## 1. Clone the Repository
 
 ```bash
-git clone https://github.com/<your-username>/<your-repo>.git
-cd <your-repo>
+git clone https://github.com/Logeshwari-2910/custom-python-etl-data-connector-Logeshwari-3122225001304.git
+cd custom-python-etl-data-connector-Logeshwari-3122225001304
 ```
 
 ---
 
-## 2. Create and Activate a Virtual Environment
+##  2. Create and Activate Virtual Environment
 
-**Windows (CMD):**
+**Windows (CMD or PowerShell)**:
 
 ```bash
 python -m venv venv
 venv\Scripts\activate
 ```
 
-**macOS / Linux:**
+**macOS / Linux**:
 
 ```bash
 python3 -m venv venv
@@ -35,7 +34,7 @@ source venv/bin/activate
 
 ---
 
-## 3. Install Dependencies
+##  3. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
@@ -43,23 +42,24 @@ pip install -r requirements.txt
 
 ---
 
-## 4. Environment Variables
+##  4. Create and Configure `.env` File
 
-Create a `.env` file in the root directory based on `ENV_TEMPLATE`:
+The `.env` file stores **private configuration values** that your script uses.
+It should be placed in the **root folder** of the project (next to `spamhaus_etl.py`).
+
+**Steps to create it:**
+
+1. Make a new file in the project folder called `.env`
+2. Open it with a text editor
+3. Add the following **placeholders** and replace them with your own values:
 
 ```env
-DROP_URL=<Spamhaus DROP feed URL>
-MONGO_URI=<MongoDB connection string>
-DB_NAME=<Database name>
-COLLECTION_NAME=<Collection name>
+DROP_URL=your_drop_feed_url_here
+MONGO_URI=your_mongodb_connection_string_here
+DB_NAME=your_database_name_here
+COLLECTION_NAME=your_collection_name_here
 ```
 
-⚠ **Important:**
-
-* Do **not** commit your `.env` file to GitHub.
-* Add `.env` to your `.gitignore` file.
-
----
 
 ## 5. Run the ETL Script
 
@@ -69,22 +69,21 @@ python spamhaus_etl.py
 
 The script will:
 
-* Fetch the Spamhaus DROP list.
-* Parse and store the data in MongoDB.
-* Update existing records based on the `cidr` field.
+* Download the Spamhaus DROP feed
+* Parse and structure the data
+* Upsert records into your MongoDB collection
 
 ---
 
-## Notes
+## 6. Verify Data in MongoDB
 
-* Ensure MongoDB is running locally or accessible via your `MONGO_URI`.
-* Only placeholder values should be used in `ENV_TEMPLATE`.
-* Follow your assigned branch naming convention, e.g.:
+If MongoDB is running locally:
 
-  ```
-  <YourName>_<YourRollNumber>_A
-  ```
-* Never push sensitive files like `.env` to the repository.
+```bash
+mongo
+use your_database_name
+db.your_collection_name.find().pretty()
+```
 
 ---
 
