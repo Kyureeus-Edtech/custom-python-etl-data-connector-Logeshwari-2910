@@ -2,7 +2,7 @@
 
 # 🧠 GreyNoise Multi-Endpoint ETL Data Connector
 
-**Student Name:** Logeshwari L
+**Name:** Logeshwari L
 **Roll Number:** 3122225001304
 
 ---
